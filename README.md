@@ -1,5 +1,8 @@
 # Echo 🔊
 
+[![Docker](https://img.shields.io/docker/v/ragilhadi/mimic?label=docker)](https://hub.docker.com/r/ragilhadi/echo)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+
 **Echo** is a AI chat assistant application built with Streamlit and OpenRouter. It provides a beautiful, intuitive interface for interacting with multiple AI models through a single platform.
 
 ## Features
