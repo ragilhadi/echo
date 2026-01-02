@@ -9,12 +9,10 @@ References:
 
 import streamlit as st
 from datetime import datetime
-from typing import List, Dict, Optional
+from typing import List
 from modules.frontend.managers import SessionManager, ChatManager, MessageManager
 from modules.frontend.components.message_display import MessageDisplayComponent
 from modules.client import OpenRouterClient
-from modules.client.exception import APIConnectionError, InvalidModelError
-from constants import ChatRole
 
 
 class ChatroomPageComponent:
@@ -267,14 +265,14 @@ class ChatroomPageComponent:
             st.markdown(
                 f"""
             🎉 **Welcome to {room_name}!**
-            
+
             I'm your AI assistant, ready to help with:
             - ❓ Answering questions
-            - 💡 Creative brainstorming  
+            - 💡 Creative brainstorming
             - 💻 Coding assistance
             - 📝 Writing and editing
             - 🔍 Research and analysis
-            
+
             Just type a message below to get started!
             """
             )
@@ -364,7 +362,7 @@ class ChatroomPageComponent:
                             label="Response complete!", state="complete", expanded=False
                         )
 
-                    except Exception as stream_error:
+                    except Exception:
                         status.update(
                             label="Stream failed, using fallback",
                             state="error",

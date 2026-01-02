@@ -226,7 +226,7 @@ class HomepageComponent:
             room_id (str): Room ID.
             room_name (str): Room name.
         """
-        st.error(f"⚠️ **CONFIRM DELETION**")
+        st.error("⚠️ **CONFIRM DELETION**")
         st.warning(f"Are you sure you want to permanently delete '{room_name}'?")
         st.info(
             "This will delete the room and ALL its messages. This cannot be undone!"
@@ -260,7 +260,7 @@ class HomepageComponent:
             room_id (str): Room ID.
             room_name (str): Room name.
         """
-        st.warning(f"⚠️ **CONFIRM CLEAR CHAT HISTORY**")
+        st.warning("⚠️ **CONFIRM CLEAR CHAT HISTORY**")
         st.info(
             f"Clear chat history from '{room_name}'? User and AI messages will be deleted, but system messages will be preserved."
         )
@@ -417,7 +417,7 @@ class HomepageComponent:
             # Verify room exists before entering
             room_info = self.chat_manager.get_chat_room_info(room_id)
             if not room_info:
-                st.error(f"❌ Chat room not found! Please refresh the page.")
+                st.error("❌ Chat room not found! Please refresh the page.")
                 return
 
             # Set active room in session state

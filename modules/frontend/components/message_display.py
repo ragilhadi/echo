@@ -54,45 +54,45 @@ class MessageDisplayComponent:
             margin-bottom: 1.5rem !important;
             border-radius: 8px !important;
         }
-        
+
         /* User message styling */
         .stChatMessage[data-testid="chat-message-user"] {
             background-color: transparent !important;
         }
-        
+
         /* Assistant message styling */
         .stChatMessage[data-testid="chat-message-assistant"] {
             background-color: #f7f7f8 !important;
             border: 1px solid #e5e5e5 !important;
         }
-        
+
         /* Message content styling */
         .stChatMessage .stMarkdown {
             padding: 0.5rem 0 !important;
         }
-        
+
         /* Badge styling */
         .stChatMessage .stBadge {
             margin-bottom: 0.5rem !important;
         }
-        
+
         /* Improve text readability */
         .stChatMessage p {
             line-height: 1.6 !important;
             margin-bottom: 0.5rem !important;
         }
-        
+
         /* Typing indicator animation */
         .typing-indicator {
             animation: pulse 1.5s ease-in-out infinite;
         }
-        
+
         @keyframes pulse {
             0% { opacity: 0.6; }
             50% { opacity: 1; }
             100% { opacity: 0.6; }
         }
-        
+
         /* Message spacing */
         .chat-container {
             max-width: 900px;

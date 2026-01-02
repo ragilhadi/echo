@@ -8,7 +8,7 @@ References:
 """
 
 import streamlit as st
-from typing import Optional, Tuple, List
+from typing import Optional, Tuple
 from modules.client import OpenRouterClient
 from modules.frontend.managers import SessionManager, ChatManager
 from constants import DEFAULT_SYSTEM_PROMPT

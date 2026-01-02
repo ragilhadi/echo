@@ -174,7 +174,7 @@ class ChatDatabase:
         """
         self.cursor.execute(
             """
-            DELETE FROM messages 
+            DELETE FROM messages
             WHERE room_id = ? AND role IN ('human', 'assistant')
             """,
             (room_id,),

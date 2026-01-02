@@ -7,7 +7,7 @@ References:
     OpenAI Chat API: https://platform.openai.com/docs/api-reference/chat
 """
 
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Tuple
 from constants import ChatRole
 
 

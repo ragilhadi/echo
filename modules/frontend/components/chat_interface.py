@@ -8,10 +8,8 @@ References:
 """
 
 import streamlit as st
-from typing import List, Dict, Optional
 from modules.frontend.managers import SessionManager, ChatManager, MessageManager
 from modules.frontend.components.message_display import MessageDisplayComponent
-from modules.client.exception import APIConnectionError, InvalidModelError
 from constants import ChatRole
 
 
@@ -55,7 +53,7 @@ class ChatInterfaceComponent:
             padding-top: 2rem !important;
             padding-bottom: 6rem !important;
         }
-        
+
         /* Chat input container - make it sticky */
         .stChatInput {
             position: fixed !important;
@@ -68,29 +66,29 @@ class ChatInterfaceComponent:
             z-index: 999 !important;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
         }
-        
+
         /* Chat input field styling */
         .stChatInput > div {
             max-width: 900px !important;
             margin: 0 auto !important;
         }
-        
+
         /* Ensure content doesn't go behind fixed input */
         .main-chat-content {
             margin-bottom: 120px !important;
         }
-        
+
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth !important;
         }
-        
+
         /* Message container max width */
         .chat-message-container {
             max-width: 900px !important;
             margin: 0 auto !important;
         }
-        
+
         /* Header styling */
         .chat-header {
             position: sticky !important;
@@ -101,23 +99,23 @@ class ChatInterfaceComponent:
             padding: 1rem 0 !important;
             margin-bottom: 1rem !important;
         }
-        
+
         /* Sidebar width adjustment */
         .css-1d391kg {
             width: 21rem !important;
         }
-        
+
         /* Main content area adjustment */
         .css-18e3th9 {
             padding-left: 22rem !important;
         }
-        
+
         /* Chat messages spacing */
         .stChatMessage {
             margin-bottom: 1.5rem !important;
             max-width: 100% !important;
         }
-        
+
         /* Welcome message styling */
         .welcome-message {
             display: flex !important;
@@ -125,14 +123,14 @@ class ChatInterfaceComponent:
             justify-content: center !important;
             min-height: 50vh !important;
         }
-        
+
         /* Loading spinner */
         .stSpinner {
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
         }
-        
+
         /* Auto-scroll to bottom button */
         .scroll-to-bottom {
             position: fixed !important;
@@ -150,7 +148,7 @@ class ChatInterfaceComponent:
             cursor: pointer !important;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
         }
-        
+
         .scroll-to-bottom:hover {
             background: #e5e7eb !important;
         }
@@ -364,12 +362,12 @@ class ChatInterfaceComponent:
                 behavior: 'smooth'
             });
         }
-        
+
         // Check if user is near bottom
         function isNearBottom() {
             return (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200;
         }
-        
+
         // Show/hide scroll to bottom button
         function toggleScrollButton() {
             const button = document.getElementById('scroll-to-bottom-btn');
@@ -381,7 +379,7 @@ class ChatInterfaceComponent:
                 }
             }
         }
-        
+
         // Create scroll to bottom button
         function createScrollButton() {
             if (!document.getElementById('scroll-to-bottom-btn')) {
@@ -394,18 +392,18 @@ class ChatInterfaceComponent:
                 document.body.appendChild(button);
             }
         }
-        
+
         // Auto-scroll observer for new messages
         const observer = new MutationObserver(function(mutations) {
             let shouldScroll = false;
             const wasNearBottom = isNearBottom();
-            
+
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                     // Check if new chat messages were added
                     for (let node of mutation.addedNodes) {
-                        if (node.nodeType === 1 && 
-                            (node.querySelector('[data-testid="chat-message"]') || 
+                        if (node.nodeType === 1 &&
+                            (node.querySelector('[data-testid="chat-message"]') ||
                              node.getAttribute && node.getAttribute('data-testid') === 'chat-message')) {
                             shouldScroll = true;
                             break;
@@ -413,28 +411,28 @@ class ChatInterfaceComponent:
                     }
                 }
             });
-            
+
             // Auto-scroll if user was near bottom when new message arrived
             if (shouldScroll && wasNearBottom) {
                 setTimeout(scrollToBottom, 100);
             }
-            
+
             // Update scroll button visibility
             setTimeout(toggleScrollButton, 200);
         });
-        
+
         // Start observing
         observer.observe(document.body, {
             childList: true,
             subtree: true
         });
-        
+
         // Create scroll button and initial scroll
         setTimeout(() => {
             createScrollButton();
             scrollToBottom();
         }, 500);
-        
+
         // Update scroll button on scroll
         window.addEventListener('scroll', toggleScrollButton);
         </script>
