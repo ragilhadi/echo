@@ -1,0 +1,20 @@
+services:
+  echo:
+    image: ragilhadi/echo:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: echo
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./echo_data:/app/data
+    environment:
+      - DB_PATH=/app/data/chat_history.db
+    env_file:
+      - .env
+    restart: unless-stopped
+
+volumes:
+  echo_data:
+    driver: local
